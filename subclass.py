@@ -10,10 +10,10 @@ from transformers.generation.logits_process import LogitsProcessorList
 from transformers.generation.stopping_criteria import StoppingCriteriaList, validate_stopping_criteria
 from transformers.generation.utils import SampleOutput, SampleDecoderOnlyOutput, SampleEncoderDecoderOutput
 
-from model.modeling_mpt import MPTForCausalLM
+from transformers import LlamaForCausalLM
 
 
-class YieldingMPT(MPTForCausalLM):
+class YieldingLlama(LlamaForCausalLM):
     """Overriding sample to yield tokens"""
 
     def sample(
@@ -206,12 +206,13 @@ class YieldingMPT(MPTForCausalLM):
                 input_ids, **model_kwargs)
 
             # forward pass to get next token
-            outputs = self(
-                **model_inputs,
-                return_dict=True,
-                output_attentions=output_attentions,
-                output_hidden_states=output_hidden_states,
-            )
+            with torch.inference_mode():
+                outputs = self(
+                    **model_inputs,
+                    return_dict=True,
+                    output_attentions=output_attentions,
+                    output_hidden_states=output_hidden_states,
+                )
 
             if synced_gpus and this_peer_finished:
                 continue  # don't waste resources running the code we don't need

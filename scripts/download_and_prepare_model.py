@@ -95,5 +95,5 @@ if __name__ == "__main__":
     download_hf_model_and_copy_tokenizer(
         model_name, model_path, tokenizer_path)
 
-    model = tensorize_model(
-        model_name, "fp32", tensorizer_path=model_path)
+    model = tensorize_model(dtype="fp32", model_name=model_name,
+                            model_path=model_path, tensorizer_path=model_path)

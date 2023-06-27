@@ -74,7 +74,7 @@ def tensorize_model(
 
 if __name__ == "__main__":
     model_info = tensorize_model(
-        "TheBloke/Wizard-Vicuna-7B-Uncensored-HF",
+        model_name="TheBloke/Wizard-Vicuna-7B-Uncensored-HF",
         model_path=model_path,
         tensorizer_path=tensorized_path,
         dtype="fp32"

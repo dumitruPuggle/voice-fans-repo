@@ -7,7 +7,7 @@ import sys
 
 from tensorizer import TensorSerializer
 from transformers import AutoModelForCausalLM, AutoConfig
-from path_config import model_path, tensorized_path
+from path_config import model_path, tensorized_path, model_dtype
 
 
 logger = logging.getLogger(__name__)
@@ -77,5 +77,5 @@ if __name__ == "__main__":
         model_name="TheBloke/Wizard-Vicuna-7B-Uncensored-HF",
         model_path=model_path,
         tensorizer_path=tensorized_path,
-        dtype="fp32"
+        dtype=model_dtype
     )

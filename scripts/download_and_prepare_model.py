@@ -16,7 +16,7 @@ from tensorizer import TensorSerializer
 from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig
 
 from tensorize_model import tensorize_model
-from path_config import model_name, model_path, tokenizer_path
+from path_config import model_name, model_path, tokenizer_path, model_dtype
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, stream=sys.stdout)
@@ -95,5 +95,5 @@ if __name__ == "__main__":
     download_hf_model_and_copy_tokenizer(
         model_name, model_path, tokenizer_path)
 
-    model = tensorize_model(dtype="fp32", model_name=model_name,
+    model = tensorize_model(dtype=model_dtype, model_name=model_name,
                             model_path=model_path, tensorizer_path=model_path)

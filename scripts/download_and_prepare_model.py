@@ -25,7 +25,7 @@ logging.basicConfig(level=logging.INFO, stream=sys.stdout)
 def download_model_from_hf_hub(
     model_name: str,
     model_path: str,
-    rm_existing_model: bool = True,
+    rm_existing_model: bool = False,
 ) -> dict:
     """
     This function downloads a model from the Hugging Face Hub and saves it locally.

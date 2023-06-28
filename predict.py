@@ -15,10 +15,10 @@ from cog import BasePredictor, ConcatenateIterator, Input, Path
 from subclass import YieldingLlama
 
 # path from which we pull weights when there's no COG_WEIGHTS environment variable
-TENSORIZER_WEIGHTS_PATH = "models/vicuna-13b/tensorized/vicuna-13b-16fp.tensors"
+TENSORIZER_WEIGHTS_PATH = "model/TheBloke/Wizard-Vicuna-7B-Uncensored-HF.tensors"
 
-DEFAULT_CONFIG_PATH = "models/vicuna-13b/config.json"
-TOKENIZER_PATH = "models/vicuna-13b"
+DEFAULT_CONFIG_PATH = "model/config.json"
+TOKENIZER_PATH = "models"
 
 
 def maybe_download(path):
